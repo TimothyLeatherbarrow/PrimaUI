@@ -19,14 +19,12 @@ import javafx.util.Callback;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class Controller implements Callback
+public class Controller
 {
     BufferedImage[] imgArray;
     BufferedImage img;
     Gradient g;
     Thread t;
-
-    InternalRenderer rend;
 
     DraggablePane drag;
 
@@ -51,35 +49,5 @@ public class Controller implements Callback
         imageView.fitHeightProperty().bind(drag.heightProperty());
         imageView.fitWidthProperty().bind(drag.widthProperty());
 
-        drag.boundsInParentProperty().addListener(new ChangeListener<Bounds>() {
-            @Override
-            public void changed(ObservableValue<? extends Bounds> observable, Bounds oldValue, Bounds newValue) {
-                refresh((int)newValue.getWidth(), (int)newValue.getHeight());
-            }
-        });
     }
-
-    synchronized void refresh(int x, int y)
-    {
-        if(t != null)
-            if(t.isAlive())t.interrupt();
-
-        //System.out.printf("X: %d, Y:%d\n", x, y);
-
-        rend = new InternalRenderer(this, g, x, y);
-        t = new Thread(rend);
-        t.start();
-    }
-
-    @Override
-    public Object call(Object param) {
-        double before = System.nanoTime();
-        Image convertedImage = SwingFXUtils.toFXImage(rend.img, null);
-        System.out.println("Time taken to do image conversion: " + (System.nanoTime() - before));
-
-        imageView.setImage(convertedImage);
-        return null;
-    }
-
-
 }
