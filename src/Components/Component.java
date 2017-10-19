@@ -1,5 +1,9 @@
 package Components;
 
-public class Component {
+import coreUI.DraggablePane;
+
+public class Component extends DraggablePane{
+
+
 
 }

@@ -1,5 +1,6 @@
 package coreUI;
 
+import Components.PrimaPane;
 import com.tiggerbiggo.prima.core.Builder;
 import com.tiggerbiggo.prima.core.float2;
 import com.tiggerbiggo.prima.graphics.Gradient;
@@ -42,8 +43,8 @@ public class Controller
 
         g = new Gradient(Color.black, Color.red, true);
 
-
-        drag.getChildren().add(imageView);
+        drag.getChildren().add(new PrimaPane());
+        drag.setPrefSize(100, 100);
         nodePane.getChildren().add(drag);
 
         imageView.fitHeightProperty().bind(drag.heightProperty());
