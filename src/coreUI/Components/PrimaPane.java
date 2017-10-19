@@ -1,11 +1,15 @@
 package coreUI.Components;
 
 import com.tiggerbiggo.prima.core.Builder;
+import coreUI.ControlRelay;
+import coreUI.settingsPanes.PrimaSettingsPane;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.event.EventHandler;
 import javafx.geometry.Bounds;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
@@ -52,7 +56,12 @@ public class PrimaPane extends Pane{
             }
         });
 
-
+        setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                ControlRelay.getInstance().changeSettingsPane(new PrimaSettingsPane(PrimaPane.this));
+            }
+        });
     }
 
     public PrimaPane()
@@ -65,7 +74,7 @@ public class PrimaPane extends Pane{
         return b;
     }
 
-    private synchronized void refreshImage()
+    public synchronized void refreshImage()
     {
         int x, y;
         x = (int)getWidth();

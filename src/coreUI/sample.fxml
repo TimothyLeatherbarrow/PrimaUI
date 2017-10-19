@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<SplitPane dividerPositions="0.6588628762541806" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0" prefWidth="883.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141" fx:controller="coreUI.Controller">
+<SplitPane dividerPositions="0.6588628762541806" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0" prefWidth="883.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coreUI.Controller">
   <items>
       <ScrollPane>
          <content>
@@ -16,6 +16,6 @@
             </AnchorPane>
          </content>
       </ScrollPane>
-    <AnchorPane maxWidth="-Infinity" minHeight="0.0" minWidth="175.0" prefWidth="200.0" />
+    <AnchorPane fx:id="settingsHolder" maxWidth="-Infinity" minHeight="0.0" minWidth="175.0" prefWidth="200.0" />
   </items>
 </SplitPane>

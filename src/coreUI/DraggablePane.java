@@ -24,6 +24,7 @@ public class DraggablePane extends AnchorPane
             @Override
             public void handle(MouseEvent event)
             {
+                event.consume();
                 if(dragged == false) {
                     dx = event.getX();
                     dy = event.getY();
@@ -38,13 +39,13 @@ public class DraggablePane extends AnchorPane
                     }
                     else if(event.isSecondaryButtonDown())
                     {
-                        System.out.println("RMB");
                         setPrefSize(
                                 event.getX() + startW - dx,
                                 event.getY() + startH - dy
                         );
                     }
                 }
+                getParent().layout();
             }
         });
 

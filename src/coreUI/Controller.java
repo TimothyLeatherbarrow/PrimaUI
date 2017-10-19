@@ -2,8 +2,11 @@ package coreUI;
 
 import coreUI.Components.PrimaPane;
 import com.tiggerbiggo.prima.graphics.Gradient;
+import coreUI.settingsPanes.PrimaSettingsPane;
+import coreUI.settingsPanes.SettingsPane;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
 import java.awt.*;
@@ -16,28 +19,43 @@ public class Controller
     Gradient g;
     Thread t;
 
-    DraggablePane drag;
+    SettingsPane settings = null;
 
     @FXML
     Pane nodePane;
 
-    ImageView imageView;
+    @FXML
+    AnchorPane settingsHolder;
 
     @FXML
-    public void initialize()
-    {
-        drag = new DraggablePane(30, 30, 300, 300);
-        drag.setPrefSize(100, 100);
-        imageView = new ImageView();
+    public void initialize(){
 
         g = new Gradient(Color.black, Color.red, true);
 
-        drag.getChildren().add(new PrimaPane());
-        drag.setPrefSize(100, 100);
-        nodePane.getChildren().add(drag);
 
-        imageView.fitHeightProperty().bind(drag.heightProperty());
-        imageView.fitWidthProperty().bind(drag.widthProperty());
+        for(int i=0; i<3; i++) {
+            DraggablePane drag = new DraggablePane(30, 30, 300, 300);
+            drag.setPrefSize(100, 100);
+            drag.getChildren().add(new PrimaPane());
+            nodePane.getChildren().add(drag);
+        }
 
+        try {
+            new ControlRelay(this);
+        }
+        catch(Exception e){}
+    }
+
+    public void changeSettingsPane(SettingsPane p)
+    {
+        if(settings != null)
+        {
+            try {
+                settingsHolder.getChildren().remove(settings);
+            }
+            catch (Exception e){}
+        }
+        settings = p;
+        settingsHolder.getChildren().add(settings);
     }
 }
