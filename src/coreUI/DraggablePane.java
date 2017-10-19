@@ -11,14 +11,14 @@ public class DraggablePane extends AnchorPane
     double dx, dy , startW, startH;
 
 
-    public DraggablePane()
+    public DraggablePane(int minW, int minH, int maxW, int maxH)
     {
         super();
 
         dx = dy = 0;
 
-        this.setMaxSize(USE_PREF_SIZE, USE_PREF_SIZE);
-        this.setMinSize(USE_PREF_SIZE, USE_PREF_SIZE);
+        this.setMinSize(minW, minH);
+        this.setMaxSize(maxW, maxH);
 
         this.setOnMouseDragged(new EventHandler<MouseEvent>() {
             @Override

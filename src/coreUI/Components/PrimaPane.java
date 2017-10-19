@@ -1,4 +1,4 @@
-package Components;
+package coreUI.Components;
 
 import com.tiggerbiggo.prima.core.Builder;
 import javafx.beans.value.ChangeListener;
@@ -7,10 +7,7 @@ import javafx.embed.swing.SwingFXUtils;
 import javafx.geometry.Bounds;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Paint;
 
 import java.awt.image.BufferedImage;
 
