@@ -57,5 +57,6 @@ public class Controller
         }
         settings = p;
         settingsHolder.getChildren().add(settings);
+        settings.layout();
     }
 }

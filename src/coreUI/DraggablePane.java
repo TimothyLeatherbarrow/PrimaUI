@@ -28,14 +28,26 @@ public class DraggablePane extends AnchorPane
                 if(dragged == false) {
                     dx = event.getX();
                     dy = event.getY();
-                    startH = getPrefHeight();
-                    startW = getPrefWidth();
+                    startH = Math.min(
+                            Math.max(
+                                    getPrefHeight(),
+                                    getMinHeight()),
+                            getMaxHeight());
+
+                    startW = Math.min(
+                            Math.max(
+                                    getPrefWidth(),
+                                    getMinWidth()),
+                            getMaxWidth());
                     dragged = true;
                 }
                 else {
                     if(event.isPrimaryButtonDown()) {
                         setLayoutX(event.getX() + getLayoutX() - dx);
                         setLayoutY(event.getY() + getLayoutY() - dy);
+
+                        if(getLayoutX() <0) setLayoutX(0);
+                        if(getLayoutY() <0) setLayoutY(0);
                     }
                     else if(event.isSecondaryButtonDown())
                     {
